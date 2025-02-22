@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     private InputAction switchViewAction;
     private InputAction lookAction;
     private InputAction moveAction;
+    private InputAction quitAction;
 
     private Vector2 lookDirection;
     private Vector2 moveDirection;
@@ -25,9 +26,11 @@ public class InputManager : MonoBehaviour
         switchViewAction = InputSystem.actions.FindAction("SwitchView");
         lookAction = InputSystem.actions.FindAction("Look");
         moveAction = InputSystem.actions.FindAction("Move");
+        quitAction = InputSystem.actions.FindAction("Quit");
 
         regenerateAction.performed += ctx => Regenerate();
         switchViewAction.performed += ctx => SwitchView();
+        quitAction.performed += ctx => Application.Quit();
 
         lookAction.started += OnLook;
         lookAction.performed += OnLook;

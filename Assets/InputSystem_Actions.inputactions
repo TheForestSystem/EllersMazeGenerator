@@ -54,7 +54,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "8489c992-2d05-48ae-957f-b7c69cbd73b8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1034,6 +1034,34 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Regenerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Game",
+            "id": "5259a1dc-5a86-4694-8482-026f266d1f5f",
+            "actions": [
+                {
+                    "name": "Quit",
+                    "type": "Button",
+                    "id": "a2e12477-5a2a-4a3a-b026-70f86051c44c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f9587d43-f3da-4e35-838e-d85ce01e4fb7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
