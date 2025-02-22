@@ -41,25 +41,25 @@ public class InputManager : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>();
-        Debug.Log("Moving: " + moveDirection);
+        // Debug.Log("Moving: " + moveDirection);
     }
 
     private void OnMoveCanceled(InputAction.CallbackContext context)
     {
         moveDirection = Vector2.zero;
-        Debug.Log("Move Stopped");
+        // Debug.Log("Move Stopped");
     }
 
     private void OnLook(InputAction.CallbackContext ctx)
     {
         lookDirection = ctx.ReadValue<Vector2>();
-        Debug.Log("Looking: " + lookDirection);
+        // Debug.Log("Looking: " + lookDirection);
     }
 
     private void OnLookCanceled(InputAction.CallbackContext ctx)
     {
         lookDirection = Vector2.zero;
-        Debug.Log("Look Stopped");
+        // Debug.Log("Look Stopped");
     }
 
     private void SwitchView()
