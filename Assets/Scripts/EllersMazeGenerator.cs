@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EllersMazeGenerator : MonoBehaviour
 {
@@ -16,8 +17,17 @@ public class EllersMazeGenerator : MonoBehaviour
 
     [SerializeField] int wall_yvalue;
 
+    [HideInInspector]
+    public static EllersMazeGenerator Instance { get; private set; }
+
     private CustomGrid gridXZ;
     private int maxSetValue = 1;
+    private List<GameObject> spawnedWalls = new List<GameObject>();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -205,7 +215,24 @@ public class EllersMazeGenerator : MonoBehaviour
         PlaceWall_XZ(Vector3.forward, row[row.Count - 1].Item1[0] + 1, row[row.Count - 1].Item1[1]);
     }
 
+    public void RegenerateMaze()
+    {
+        ClearMaze();
+        SpawnEllersMaze();
+    }
+
     #region HelperFunctions
+
+    private void ClearMaze()
+    {
+        foreach (var wall in spawnedWalls)
+        {
+            Destroy(wall);
+        }
+        spawnedWalls.Clear();
+
+        maxSetValue = 1;
+    }
 
     private List<(int[], int)> IncreaseAxisRow(int addAmount, List<(int[], int)> row)
     {
@@ -254,7 +281,8 @@ public class EllersMazeGenerator : MonoBehaviour
         Vector3 position = gridXZ.GetWorldPosition(x, z);
         position.y = wall_yvalue;
 
-        GameObject.Instantiate(wall, position, Quaternion.LookRotation(direction));
+        GameObject newWall = Instantiate(wall, position, Quaternion.LookRotation(direction));
+        if (newWall != null) spawnedWalls.Add(newWall);
     }
 
     private bool inRangeInclsuive(int num, int minRange, int maxRange)
