@@ -15,7 +15,7 @@ public class EllersMazeGenerator : MonoBehaviour
 
     [SerializeField] GameObject wall;
 
-    [SerializeField] int wall_yvalue;
+    [SerializeField] float wall_yvalue;
 
     [HideInInspector]
     public static EllersMazeGenerator Instance { get; private set; }
